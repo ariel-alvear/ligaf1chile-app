@@ -1,1 +1,16 @@
-<h1>Aquí estarán las ligas</h1>
+<div class="container mt-4">
+  <h1>Bienvenidos a F1Chile</h1>
+  <p>Puedes ver nuestras ligas a continuación<p>
+</div>
+
+<%= button_to 'Crear nueva liga', new_league_path, class: 'btn btn-info', method: :get %>
+
+<% @leagues.each do |league| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= league.name %></h5>
+      <p class="card-text"><%= league.description %></p>
+      <a href="<%= league_path(league.id) %>" class="btn btn-info">Ver detalle</a>
+    </div>
+  </div>
+<% end %>
