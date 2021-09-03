@@ -1,5 +1,7 @@
 # En estos controladores se manejan las ligas
 class LeaguesController < ApplicationController
+  before_action :set_league, only: [:show, :edit]
+
   def index
     @leagues = League.all
   end

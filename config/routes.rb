@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resource :league
-  get 'leagues/index'
+  resources :leagues
 
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
