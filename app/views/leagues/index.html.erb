@@ -11,6 +11,7 @@
       <h5 class="card-title"><%= league.name %></h5>
       <p class="card-text"><%= league.description %></p>
       <a href="<%= league_path(league.id) %>" class="btn btn-info">Ver detalle</a>
+      <a href="<%= edit_league_path(league.id) %>" class="btn btn-info">Editar liga</a>
     </div>
   </div>
 <% end %>

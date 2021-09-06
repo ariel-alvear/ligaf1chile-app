@@ -1,6 +1,6 @@
 # En estos controladores se manejan las ligas
 class LeaguesController < ApplicationController
-  before_action :set_league, only: [:show, :edit]
+  before_action :set_league, only: [:show, :edit, :update]
 
   def index
     @leagues = League.all
