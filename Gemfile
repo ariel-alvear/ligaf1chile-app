@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Formularios
 gem 'simple_form'
+
+# Usuarios y autenticación
+gem 'devise'
