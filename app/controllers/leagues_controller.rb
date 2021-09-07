@@ -12,7 +12,9 @@ class LeaguesController < ApplicationController
   end
 
   def create
+    @user = current_user
     @league = League.create(league_params)
+    @league.update(created_by: @user.drivers_name)
     if @league.valid?
       redirect_to @league
     else
@@ -49,6 +51,6 @@ class LeaguesController < ApplicationController
   end
 
   def league_params
-    params.require(:league).permit(:name, :description, :participants, :admins)
+    params.require(:league).permit(:name, :description, :participants, :admins,:created_by)
   end
 end
