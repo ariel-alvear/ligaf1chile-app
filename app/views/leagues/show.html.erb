@@ -1,10 +1,11 @@
 <div class="mt-4 container">
   <h1>Detalle liga</h1>
 
-  <p><%= @league.name %></p>
-  <p><%= @league.description %></p>
-  <p><%= @league.participants %></p>
-  <p><%= @league.admins %></p>
+  <p>Nombre: <%= @league.name %></p>
+  <p>Descripción: <%= @league.description %></p>
+  <p>Nº de Participantes: <%= @league.participants %></p>
+  <p>Nº de Admins: <%= @league.admins %></p>
 </div>
 
+<%= link_to 'Seleccionar participantes', new_user_league_path(league: @league.id) %>
 <%= link_to 'Volver a ligas', leagues_path %>

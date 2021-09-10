@@ -1,0 +1,7 @@
+<h1>Participantes de <strong><%= League.find(params[:league]).name %></strong></h1>
+
+<% @user_leagues.each do |participant| %>
+  <p><%= participant.user.name %></p>
+<% end %>
+
+<%= link_to 'Agregar participantes', new_user_league_path(league: params[:league]) %>

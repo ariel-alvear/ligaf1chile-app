@@ -1,0 +1,12 @@
+<%= simple_form_for @user_league do |f| %>
+  <%= f.hidden_field :league_id, value: params[:league] %>
+  <ul>
+    <% @users.each do |user| %>
+        <li>
+          <%= check_box_tag "users_ids[]", user.id, id: "user_ids_#{user.id}" %>
+          <%= h user.name %>
+        </li>
+    <% end %>
+  </ul>
+  <%= f.submit 'Añadir participantes' %>
+<% end %>
