@@ -18,7 +18,7 @@ class LeaguesController < ApplicationController
     if @league.valid?
       redirect_to @league
     else
-      flash[:errors] = @league.errors.full_messages
+      flash[:alert] = @league.errors.full_messages
       redirect_to new_league_path
     end
   end
@@ -31,7 +31,7 @@ class LeaguesController < ApplicationController
     if @league.valid?
       redirect_to @league
     else
-      flash[:errors] = @league.errors.full_messages
+      flash[:alert] = @league.errors.full_messages
       redirect_to edit_user_path(@league)
     end
   end
