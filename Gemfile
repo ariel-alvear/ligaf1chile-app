@@ -60,3 +60,6 @@ gem 'simple_form'
 
 # Usuarios y autenticación
 gem 'devise'
+
+# Roles y permisos
+gem 'cancancan'

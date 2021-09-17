@@ -3,7 +3,9 @@
   <p>Puedes ver nuestras ligas a continuación<p>
 </div>
 
-<%= button_to 'Crear nueva liga', new_league_path, class: 'btn btn-info', method: :get %>
+<% if can? :manage, League %>
+  <%= button_to 'Crear nueva liga', new_league_path, class: 'btn btn-info', method: :get %>
+<% end %>
 
 <% @leagues.each do |league| %>
   <div class="card">
@@ -11,7 +13,10 @@
       <h5 class="card-title"><%= league.name %></h5>
       <p class="card-text"><%= league.description %></p>
       <a href="<%= league_path(league.id) %>" class="btn btn-info">Ver detalle</a>
-      <a href="<%= edit_league_path(league.id) %>" class="btn btn-info">Editar liga</a>
+
+      <% if can? :manage, League %>
+        <a href="<%= edit_league_path(league.id) %>" class="btn btn-info">Editar liga</a>
+      <% end %>
       <a href="<%= user_leagues_path(league: league.id) %>" class="btn btn-info">Participantes</a>
       <p>Creado por: <%= league.created_by %></p>
     </div>
