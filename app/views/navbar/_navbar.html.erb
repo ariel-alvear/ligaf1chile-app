@@ -5,12 +5,18 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+    <% if current_user %>
+      <li>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-primary mx-4'  %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+    <% else %>
+      <li>
+        <%= button_to 'Ingresar', new_user_session_path, :class => 'btn btn-primary mx-4' %>
       </li>
+      <li>
+        <%= button_to 'Crear usuario', new_user_registration_path, method: :get, :class => 'btn btn-primary mx-4' %>
+      </li>
+    <% end %>
     </ul>
   </div>
 </nav>
