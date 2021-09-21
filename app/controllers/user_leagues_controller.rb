@@ -2,6 +2,7 @@
 class UserLeaguesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_league, only: [:show, :edit, :update]
+  load_and_authorize_resource
 
   def index
     @user_leagues = UserLeague.where(league_id: params[:league])

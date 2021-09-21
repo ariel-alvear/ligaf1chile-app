@@ -4,6 +4,8 @@
   <p><%= participant.user.name %></p>
 <% end %>
 
-<%= link_to 'Agregar participantes', new_user_league_path(league: params[:league]) %>
+<% if can? :manage, League %>
+  <%= link_to 'Agregar participantes', new_user_league_path(league: params[:league]) %>
+<% end %>
 
 <%= link_to 'Volver a ligas', leagues_path, class: 'btn btn-info' %>
