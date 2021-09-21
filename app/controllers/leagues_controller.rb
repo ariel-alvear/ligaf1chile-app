@@ -2,6 +2,7 @@
 class LeaguesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_league, only: [:show, :edit, :update]
+  load_and_authorize_resource
 
   def index
     @leagues = League.all

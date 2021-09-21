@@ -7,7 +7,8 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    if user.roles.any? { |role| role == "superadmin" }
+    # checkeamos si hay un super admin
+    if user.roles.where(id: 1).any?
       can :manage, :all
     else
       can :read, :all
