@@ -8,4 +8,5 @@
 </div>
 
 <%= link_to 'Seleccionar participantes', new_user_league_path(league: @league.id) %>
+<a href="<%= events_path(league: @league.id) %>" class="btn btn-info">Eventos</a>
 <%= link_to 'Volver a ligas', leagues_path %>

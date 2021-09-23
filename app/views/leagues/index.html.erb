@@ -18,6 +18,7 @@
         <a href="<%= edit_league_path(league.id) %>" class="btn btn-info">Editar liga</a>
       <% end %>
       <a href="<%= user_leagues_path(league: league.id) %>" class="btn btn-info">Participantes</a>
+      <a href="<%= events_path(league: league.id) %>" class="btn btn-info">Eventos</a>
       <p>Creado por: <%= league.created_by %></p>
     </div>
   </div>

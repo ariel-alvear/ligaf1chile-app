@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order: 1
+  date: 2021-09-23
+  track: one
+  league: one
+
+two:
+  order: 1
+  date: 2021-09-23
+  track: two
+  league: two
