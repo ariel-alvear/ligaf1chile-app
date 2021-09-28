@@ -63,3 +63,8 @@ gem 'devise'
 
 # Roles y permisos
 gem 'cancancan'
+
+# Favicon para rails
+group :development do
+  gem 'rails_real_favicon'
+end
