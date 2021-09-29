@@ -6,7 +6,6 @@
     <% end %>
     </ul>
   <% end %>
-  <%= f.input :order, label: 'Posición del evento' %>
   <%= f.input :date, label: 'Fecha del evento' %>
   <%= f.input :track_id, label: 'Pista', collection: @tracks %>
   <%= f.input :league_id, as: :hidden, input_html: { value: @league.id } %>
