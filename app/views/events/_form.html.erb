@@ -1,0 +1,14 @@
+<%= simple_form_for @event do |f| %>
+  <% if @event.errors.any? %>
+    <ul>
+    <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <%= f.input :order, label: 'Posición del evento' %>
+  <%= f.input :date, label: 'Fecha del evento' %>
+  <%= f.input :track_id, label: 'Pista', collection: @tracks %>
+  <%= f.input :league_id, as: :hidden, input_html: { value: @league.id } %>
+  <%= f.submit 'Crear nuevo evento', class: 'btn btn-success', locals: { league: @league } %>
+<% end %>
