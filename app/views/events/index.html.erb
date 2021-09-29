@@ -1,3 +1,15 @@
 <h1>Listado de eventos de liga</h1>
 
+<% @events.each do |event| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= event.track_name %></h5>
+      <p class="card-text"><%= event.date %></p>
+      <p class="card-text"><%= event.track_country %></p>
+    </div>
+  </div>
+<% end %>
+
+<a href="<%= new_event_path(league: @league.id) %>" class="btn btn-info">Crear nuevo evento</a>
+
 <a href="<%= league_path(@league.id) %>" class="btn btn-info">Volver a liga</a>
