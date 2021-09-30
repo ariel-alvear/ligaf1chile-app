@@ -1,0 +1,12 @@
+<%= simple_form_for @user_event do |f| %>
+  <% if @user_event.errors.any? %>
+    <ul>
+    <% @user_event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <%= f.input :user_id, as: :check_boxes, collection: @users, wrapper: :vertical_collection_inline, label: 'Usuarios' %>
+  <%= f.input :event_id, as: :hidden, input_html: { value: @event.id } %>
+  <%= f.submit 'Crear nuevo evento', class: 'btn btn-success' %>
+<% end %>

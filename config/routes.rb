@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :leagues
   resources :user_leagues
   resources :events
+  resources :user_events
 
   root 'leagues#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

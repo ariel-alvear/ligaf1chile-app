@@ -6,6 +6,7 @@
       <h5 class="card-title"><%= event.track_name %></h5>
       <p class="card-text"><%= event.date %></p>
       <p class="card-text"><%= event.track_country %></p>
+      <a href="<%= user_events_path(event_id: event.id) %>" class="btn btn-info">Participantes</a>
     </div>
   </div>
 <% end %>
