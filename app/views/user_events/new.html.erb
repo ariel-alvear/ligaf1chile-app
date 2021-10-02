@@ -1,5 +1,9 @@
 <h2>Añadir participantes</h2>
 
-<%= render 'form' %>
+<% if params[:scores] = 1 %>
+  <%= render 'scores_form' %>
+<% else %>
+  <%= render 'form' %>
+<% end %>
 
-<a href="<%= events_path %>" class="btn btn-info">Volver a Evento</a>
+<a href="<%= events_path(league: params[:league]) %>" class="btn btn-info">Volver a Evento</a>

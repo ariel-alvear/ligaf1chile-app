@@ -1,3 +1,10 @@
 <h1>Participantes del evento</h1>
 
-<a href="<%= new_user_event_path(event_id: @event.id) %>" class="btn btn-info">Agregar Participantes</a>
+<% @user_events.each do |user_event| %>
+  <p><%= user_event.user_name %>
+<% end %>
+<hr>
+<a href="<%= new_user_event_path(event_id: @event.id, league: params[:league]) %>" class="btn btn-info">Agregar Participantes</a>
+<a href="<%= new_user_event_path(event_id: @event.id, league: params[:league], scores: 1) %>" class="btn btn-info">Asignar Puntajes</a>
+<a href="<%= events_path(league: @league.id) %>" class="btn btn-info">Volver a eventos</a>
+

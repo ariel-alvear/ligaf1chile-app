@@ -2,13 +2,15 @@
 class UserEventsController < ApplicationController
   def index
     @user_events = UserEvent.where(event_id: params[:event_id])
-    @event = Event.find(params[:event_id].to_i)
+    @event = Event.find(params[:event_id])
+    @league = League.find(params[:league])
   end
 
   def new
-    @event = Event.find(params[:event_id].to_i)
+    @event = Event.find(params[:event_id])
     @user_event = UserEvent.new
     @users = User.all
+    @user_events = UserEvent.where(event_id: params[:event_id])
   end
 
   def create
@@ -16,13 +18,9 @@ class UserEventsController < ApplicationController
     @user_ids.each do |user_id|
       @event = Event.find(params[:user_event][:event_id])
       @user_event = UserEvent.create(user_id: user_id, event_id: @event.id)
-      if @user_event.valid?
-        puts 'hola'
-      else
-        flash[:alert] = @event.errors.full_messages
-        puts 'fail'
-      end
+      flash[:alert] = @user_event.errors.full_messages if @user_event.invalid?
     end
+    redirect_to user_events_path(event_id: params[:user_event][:event_id])
   end
 
   private

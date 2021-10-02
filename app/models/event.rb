@@ -13,4 +13,8 @@ class Event < ApplicationRecord
   def track_country
     Track.find(self.track_id).country
   end
+
+  def participant_number
+    self.user_events.count
+  end
 end
