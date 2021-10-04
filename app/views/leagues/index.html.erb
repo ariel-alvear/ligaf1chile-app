@@ -8,17 +8,16 @@
 <% end %>
 
 <% @leagues.each do |league| %>
-  <div class="card">
+  <div class="card mt-2">
     <div class="card-body">
-      <h5 class="card-title"><%= league.name %></h5>
-      <p class="card-text"><%= league.description %></p>
-      <a href="<%= league_path(league.id) %>" class="btn btn-info">Ver detalle</a>
-
+      <h5 class="card-title d-inline-block"><%= league.name %></h5>
       <% if can? :manage, League %>
-        <a href="<%= edit_league_path(league.id) %>" class="btn btn-info">Editar liga</a>
+        <a href="<%= edit_league_path(league.id) %>" class="d-inline-block"><i class="far fa-edit"></i></a>
       <% end %>
-      <a href="<%= events_path(league: league.id) %>" class="btn btn-info">Eventos</a>
-      <p>Creado por: <%= league.created_by %></p>
+      <a href="<%= events_path(league: league.id) %>" class="d-inline-block"><i class="fas fa-list-ol"></i></a>
+      <p class="card-text"><%= league.description %></p>
+      <p class="card-text"><strong>Participantes: <%= league.league_participants %></strong></p>
+      <p class="card-text"><strong>Carreras: <%= league.league_events %></strong></p>
     </div>
   </div>
 <% end %>
