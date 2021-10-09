@@ -74,3 +74,9 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
 end
+
+# revisar migraciones peligrosas
+gem 'strong_migrations'
+
+# formularios anidados
+gem "cocoon"
