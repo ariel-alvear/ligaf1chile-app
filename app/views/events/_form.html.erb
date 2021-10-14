@@ -1,4 +1,4 @@
-<%= simple_form_for @event do |f| %>
+<%= simple_form_for @event do |form| %>
   <% if @event.errors.any? %>
     <ul>
     <% @event.errors.full_messages.each do |message| %>
@@ -6,8 +6,18 @@
     <% end %>
     </ul>
   <% end %>
-  <%= f.input :date, label: 'Fecha del evento' %>
-  <%= f.input :track_id, label: 'Pista', collection: @tracks %>
-  <%= f.input :league_id, as: :hidden, input_html: { value: @league.id } %>
-  <%= f.submit 'Crear nuevo evento', class: 'btn btn-success', locals: { league: @league } %>
+  <%= form.input :date, label: 'Fecha del evento' %>
+  <%= form.input :track_id, label: 'Pista', collection: @tracks %>
+  <%= form.input :league_id, as: :hidden, input_html: { value: @league.id } %>
+
+  <h3>Agregar participante</h3>
+  <%= form.fields_for :user_events do |user_event| %>
+    <%= render 'user_event_fields', f: user_event %>
+  <% end %>
+
+  <div class="link">
+    <%= link_to_add_association "Agregar otro participante", form, :user_events %>
+  </div>
+
+  <%= form.submit 'Crear nuevo evento', class: 'btn btn-success', locals: { league: @league } %>
 <% end %>
