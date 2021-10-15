@@ -1,9 +1,27 @@
-<h1>Participantes del evento</h1>
+<h2>Participantes de <strong><%= @event.track.name %></strong></h2>
 
-<% @user_events.each do |user_event| %>
-  <p><%= user_event.user_name %>
-<% end %>
-<hr>
-<a href="#" class="btn btn-info">Asignar Puntajes</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Posición</th>
+      <th scope="col">Id de piloto</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Puntaje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_events.each do |user_event| %>
+      <tr>
+        <td><%= user_event.position %></td>
+        <td><%= user_event.user_driver_name %></td>
+        <td><%= user_event.user_name %></td>
+        <td><%= user_event.user_last_name %></td>
+        <td><%= user_event.points %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <a href="<%= events_path(league: @league.id) %>" class="btn btn-info">Volver a eventos</a>
 
