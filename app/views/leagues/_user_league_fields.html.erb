@@ -1,0 +1,6 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.select(:user_id, users_for_select, prompt: 'Seleccionar participante') %>
+    <%= link_to_remove_association "Remove participant", f %>
+  </div>
+</div>

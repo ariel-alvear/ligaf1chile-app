@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   belongs_to :track
   belongs_to :league
 
-  has_many :user_events
+  has_many :user_events, dependent: :destroy
   has_many :users, through: :user_events
 
   accepts_nested_attributes_for :user_events, allow_destroy: true

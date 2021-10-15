@@ -52,6 +52,6 @@ class LeaguesController < ApplicationController
   end
 
   def league_params
-    params.require(:league).permit(:name, :description, :created_by)
+    params.require(:league).permit(:name, :description, user_leagues_attributes: [:user_id])
   end
 end

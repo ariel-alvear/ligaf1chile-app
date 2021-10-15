@@ -7,8 +7,11 @@ class User < ApplicationRecord
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles, dependent: :destroy
 
-  has_many :user_events
+  has_many :user_events, dependent: :destroy
   has_many :events, through: :user_events
+
+  has_many :user_leagues, dependent: :destroy
+  has_many :leagues, through: :user_leagues
 
   validates :name, presence: true
   validates :last_name, presence: true

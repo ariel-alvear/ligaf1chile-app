@@ -3,11 +3,7 @@
 one:
   user: one
   league: one
-  status: MyString
-  points: 1
 
 two:
   user: two
   league: two
-  status: MyString
-  points: 1

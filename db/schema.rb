@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_30_222504) do
+ActiveRecord::Schema.define(version: 2021_10_15_043356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2021_09_30_222504) do
     t.index ["user_id"], name: "index_user_events_on_user_id"
   end
 
+  create_table "user_leagues", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "league_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["league_id"], name: "index_user_leagues_on_league_id"
+    t.index ["user_id"], name: "index_user_leagues_on_user_id"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "role_id", null: false
@@ -86,6 +95,8 @@ ActiveRecord::Schema.define(version: 2021_09_30_222504) do
   add_foreign_key "events", "tracks"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
+  add_foreign_key "user_leagues", "leagues"
+  add_foreign_key "user_leagues", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end
