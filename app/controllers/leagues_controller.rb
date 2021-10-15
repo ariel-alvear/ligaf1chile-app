@@ -38,6 +38,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
+    @user_leagues = UserLeague.where(league_id: params[:id])
   end
 
   def destroy

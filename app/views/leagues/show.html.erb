@@ -1,9 +1,26 @@
-<div class="mt-4 container">
-  <h1>Detalle liga</h1>
-
-  <p>Nombre: <%= @league.name %></p>
-  <p>Descripción: <%= @league.description %></p>
-</div>
+<h2>Liga: <strong><%= @league.name %></strong></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Posición</th>
+      <th scope="col">Id de piloto</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Puntaje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_leagues.each do |user_league| %>
+      <tr>
+        <td><%= user_league.position %></td>
+        <td><%= user_league.user_driver_name %></td>
+        <td><%= user_league.user_name %></td>
+        <td><%= user_league.user_last_name %></td>
+        <td><%= user_league.points %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <a href="<%= events_path(league: @league.id) %>" class="btn btn-info">Eventos</a>
 <%= link_to 'Volver a ligas', leagues_path %>
