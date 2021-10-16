@@ -16,8 +16,12 @@ class UserLeague < ApplicationRecord
     self.user.drivers_name
   end
 
-  def user_events
-    self.user.user_events.count
+  def user_events(league_id)
+    events_from_league = []
+    self.user.user_events.each do |user_event|
+      events_from_league << user_event.event.league.id if user_event.event.league.id == league_id
+    end
+    events_from_league.count
   end
 
   def user_points
