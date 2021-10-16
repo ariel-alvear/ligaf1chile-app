@@ -22,8 +22,14 @@
         <td><%= user_league.user_last_name %></td>
         <td><%= user_league.user_events(@league.id) %></td>
         <td><%= user_league.points %></td>
-        <td>-<%= user_league.user_sanctions_points %></td>
-        <td><%= user_league.points - user_league.user_sanctions_points %></td>
+        <td>
+          <% if user_league.user_sanctions_points(@league.id) > 0 %>
+            -<%= user_league.user_sanctions_points(@league.id) %>
+          <% else %>
+            Sin sanciones
+          <% end %>
+        </td>
+        <td><%= user_league.points - user_league.user_sanctions_points(@league.id) %></td>
       </tr>
     <% end %>
   </tbody>

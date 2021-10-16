@@ -32,10 +32,10 @@ class UserLeague < ApplicationRecord
     user_league_points.sum
   end
 
-  def user_sanctions_points
+  def user_sanctions_points(league_id)
     sanctions_points = []
     self.user.user_events.each do |user_event|
-      sanctions_points << user_event.sanctions.pluck(:points_taken).sum
+      sanctions_points << user_event.sanctions.pluck(:points_taken).sum if user_event.event.league_id == league_id.to_i
     end
     sanctions_points.sum
   end
