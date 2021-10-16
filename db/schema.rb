@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_021701) do
+ActiveRecord::Schema.define(version: 2021_10_16_023923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2021_10_16_021701) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sanctions", force: :cascade do |t|
+    t.text "description"
+    t.integer "points_taken"
+    t.string "videolink"
+    t.bigint "user_event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_event_id"], name: "index_sanctions_on_user_event_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -94,6 +104,7 @@ ActiveRecord::Schema.define(version: 2021_10_16_021701) do
 
   add_foreign_key "events", "leagues"
   add_foreign_key "events", "tracks"
+  add_foreign_key "sanctions", "user_events"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
   add_foreign_key "user_leagues", "leagues"

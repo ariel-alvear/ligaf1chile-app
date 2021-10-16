@@ -1,0 +1,16 @@
+<%= simple_form_for @sanction do |form| %>
+  <% if @sanction.errors.any? %>
+    <ul>
+    <% @sanction.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <%= form.input :description, label: 'Descripción y resolución de la sanción' %>
+  <%= form.input :points_taken, label: 'Puntos que se deben restar' %>
+  <%= form.input :videolink, label: 'video del incidente' %>
+  <%= form.select(:user_event_id, user_events_for_select(@event.id), prompt: 'Seleccionar participante a sancionar') %>
+
+
+  <%= form.submit 'Crear sanción', class: 'btn btn-success' %>
+<% end %>

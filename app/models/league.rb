@@ -8,15 +8,11 @@ class League < ApplicationRecord
 
   accepts_nested_attributes_for :user_leagues, allow_destroy: true
 
-  def league_participants
-    i = 0
-    self.events.each do |event|
-      i += event.users.count
-    end
-    i
-  end
-
   def league_events
     self.events.count
+  end
+
+  def league_participants
+    self.users.count
   end
 end

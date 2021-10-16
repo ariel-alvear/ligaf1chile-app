@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :user_leagues
   resources :events
   resources :user_events
+  resources :sanctions
 
   get 'user_events/assign_scores', to: 'user_events#assign_scores'
 
