@@ -2,7 +2,7 @@ class UserLeague < ApplicationRecord
   belongs_to :user
   belongs_to :league
 
-  before_save :check_for_identical_record
+  before_create :check_for_identical_record
 
   def user_name
     self.user.name
@@ -14,6 +14,14 @@ class UserLeague < ApplicationRecord
 
   def user_driver_name
     self.user.drivers_name
+  end
+
+  def user_events
+    self.user.user_events.count
+  end
+
+  def user_points
+    self.user.events.pluck(:points).sum
   end
 
   def check_for_identical_record

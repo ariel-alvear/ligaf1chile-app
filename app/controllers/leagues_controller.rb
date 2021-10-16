@@ -39,6 +39,10 @@ class LeaguesController < ApplicationController
 
   def show
     @user_leagues = UserLeague.where(league_id: params[:id])
+    @user_leagues.each do |user_league|
+      user_league.update(points: user_league.user_points)
+    end
+    @user_leagues = @user_leagues.order("points DESC")
   end
 
   def destroy
