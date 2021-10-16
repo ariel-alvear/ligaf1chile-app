@@ -1,8 +1,14 @@
 <h2>Sanciones de <strong><%= @event.track.name %></strong></h2>
 
 <% @sanctions.each do |sanction| %>
-  <p><%= sanction.points_taken %></p>
-  <p><%= sanction.user_event.user.name %></p>
+  <div class="card mt-2">
+    <div class="card-body">
+      <h5 class="card-title d-inline-block">Piloto sancionado: <strong><%= sanction.sanctionated_driver %></strong></h5>
+      <p class="card-text">Descripción: <%= sanction.description %></p>
+      <p class="card-text">Video: <%= sanction.videolink %></p>
+      <p class="card-text">Puntos: <%= sanction.points_taken %></p>
+    </div>
+  </div>
 <% end %>
 
 <a href="<%= new_sanction_path(event: params[:event_id], league: @league.id) %>" class="btn btn-info">Crear nueva sanción</a>

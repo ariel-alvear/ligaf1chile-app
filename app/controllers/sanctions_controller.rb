@@ -2,7 +2,7 @@ class SanctionsController < ApplicationController
   def index
     @league = League.find(Event.find(params[:event_id]).league.id)
     @event = Event.find(params[:event_id])
-    @sanctions = Sanction.all
+    @sanctions = Sanction.by_event(@event.id)
   end
 
   def new
