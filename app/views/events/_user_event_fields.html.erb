@@ -1,6 +1,6 @@
 <div class="nested-fields">
   <div class="field">
-    <%= f.select(:user_id, users_for_select, prompt: 'Seleccionar participante') %>
+    <%= f.select(:user_id, users_for_select_event(@league.id), prompt: 'Seleccionar participante') %>
     <%= f.input(:position, label: 'Posición en carrera') %>
     <%= f.input(:points, label: 'Puntos obtenidos') %>
     <%= link_to_remove_association "Remove participant", f %>
