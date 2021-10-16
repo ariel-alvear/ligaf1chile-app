@@ -6,6 +6,7 @@
     <% end %>
     </ul>
   <% end %>
+  <%= form.input :name, label: 'Nombre del evento' %>
   <%= form.input :date, label: 'Fecha del evento' %>
   <%= form.select(:track_id, tracks_for_select, prompt: 'Seleccionar pista') %>
   <%= form.input :league_id, as: :hidden, input_html: { value: @league.id } %>
