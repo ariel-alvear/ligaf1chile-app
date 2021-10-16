@@ -24,6 +24,14 @@ class UserLeague < ApplicationRecord
     self.user.events.pluck(:points).sum
   end
 
+  def user_sanctions_points
+    sanctions_points = []
+    self.user.user_events.each do |user_event|
+      sanctions_points << user_event.sanctions.pluck(:points_taken).sum
+    end
+    sanctions_points.sum
+  end
+
   def check_for_identical_record
     if UserLeague.exists?(user_id: self.user_id, league_id: self.league_id)
       raise Exception.new('Participantes duplicados!')

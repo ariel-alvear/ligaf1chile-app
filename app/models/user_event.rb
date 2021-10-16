@@ -1,6 +1,7 @@
 class UserEvent < ApplicationRecord
   belongs_to :user
   belongs_to :event
+  has_many :sanctions
 
   before_save :check_for_identical_record
 
@@ -14,6 +15,10 @@ class UserEvent < ApplicationRecord
 
   def user_driver_name
     self.user.drivers_name
+  end
+
+  def sanctions_points
+    self.sanctions.pluck(:points_taken).sum
   end
 
   def check_for_identical_record

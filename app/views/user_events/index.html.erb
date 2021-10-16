@@ -7,7 +7,9 @@
       <th scope="col">Id de piloto</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
-      <th scope="col">Puntaje</th>
+      <th scope="col">Puntaje preliminar</th>
+      <th scope="col">Sanciones</th>
+      <th scope="col">Puntaje final</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +20,8 @@
         <td><%= user_event.user_name %></td>
         <td><%= user_event.user_last_name %></td>
         <td><%= user_event.points %></td>
+        <td>-<%= user_event.sanctions_points %></td>
+        <td><%= user_event.points - user_event.sanctions_points %></td>
       </tr>
     <% end %>
   </tbody>

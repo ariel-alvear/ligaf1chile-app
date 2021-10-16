@@ -10,7 +10,5 @@
   <%= form.input :points_taken, label: 'Puntos que se deben restar' %>
   <%= form.input :videolink, label: 'video del incidente' %>
   <%= form.select(:user_event_id, user_events_for_select(@event.id), prompt: 'Seleccionar participante a sancionar') %>
-
-
-  <%= form.submit 'Crear sanción', class: 'btn btn-success' %>
+  <%= form.submit 'Crear sanción', class: 'btn btn-success', locals: { event: @event, league: @league } %>
 <% end %>

@@ -1,3 +1,9 @@
-<h2>Sanciones</h2>
+<h2>Sanciones de <strong><%= @event.track.name %></strong></h2>
 
-<a href="<%= new_sanction_path(event: params[:event_id]) %>" class="btn btn-info">Crear nueva sanción</a>
+<% @sanctions.each do |sanction| %>
+  <p><%= sanction.points_taken %></p>
+  <p><%= sanction.user_event.user.name %></p>
+<% end %>
+
+<a href="<%= new_sanction_path(event: params[:event_id], league: @league.id) %>" class="btn btn-info">Crear nueva sanción</a>
+<a href="<%= events_path(event_id: params[:event_id], league: @league.id) %>" class="btn btn-info">Volver a eventos</a>
