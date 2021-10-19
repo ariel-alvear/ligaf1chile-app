@@ -11,5 +11,7 @@
   </div>
 <% end %>
 
-<a href="<%= new_sanction_path(event: params[:event_id], league: @league.id) %>" class="btn btn-info">Crear nueva sanción</a>
+<% if can? :manage, League %>
+  <a href="<%= new_sanction_path(event: params[:event_id], league: @league.id) %>" class="btn btn-info">Crear nueva sanción</a>
+<% end %>
 <a href="<%= events_path(event_id: params[:event_id], league: @league.id) %>" class="btn btn-info">Volver a eventos</a>
