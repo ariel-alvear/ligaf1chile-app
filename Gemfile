@@ -80,3 +80,7 @@ gem 'strong_migrations'
 
 # formularios anidados
 gem "cocoon"
+
+# Avisos de errores en producción
+gem "sentry-ruby"
+gem "sentry-rails"
