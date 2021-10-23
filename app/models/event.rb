@@ -5,6 +5,9 @@ class Event < ApplicationRecord
   has_many :user_events, dependent: :destroy
   has_many :users, through: :user_events
 
+  validates :date, presence: true
+  validates :name, presence: true
+
   accepts_nested_attributes_for :user_events, allow_destroy: true
 
   def track_name

@@ -17,7 +17,7 @@ class UserEventsController < ApplicationController
     @user_ids = params[:user_event][:user_id]
     @user_ids.each do |user_id|
       @event = Event.find(params[:user_event][:event_id])
-      @user_event = UserEvent.create!(user_id: user_id, event_id: @event.id)
+      @user_event = UserEvent.create(user_id: user_id, event_id: @event.id)
       flash[:alert] = @user_event.errors.full_messages if @user_event.invalid?
     end
     redirect_to user_events_path(event_id: params[:user_event][:event_id])

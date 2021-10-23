@@ -14,7 +14,7 @@ class SanctionsController < ApplicationController
     @user_event = UserEvent.find(params[:sanction][:user_event_id])
     @event = Event.find(@user_event.event.id)
     @league = @event.league.id
-    @sanction = Sanction.create!(sanction_params)
+    @sanction = Sanction.create(sanction_params)
     if @sanction.valid?
       redirect_to sanctions_path(event_id: @user_event.event.id)
     else

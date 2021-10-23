@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @league = League.find(params[:event][:league_id])
-    @event = Event.create!(event_params)
+    @event = Event.create(event_params)
     if @event.valid?
       redirect_to events_path(league: params[:event][:league_id])
     else
