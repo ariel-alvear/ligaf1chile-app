@@ -20,7 +20,13 @@
         <td><%= user_event.user_name %></td>
         <td><%= user_event.user_last_name %></td>
         <td><%= user_event.points %></td>
-        <td>-<%= user_event.sanctions_points %></td>
+        <td>
+          <% if user_event.sanctions_points > 0 %>
+            -<%= user_event.sanctions_points %>
+          <% else %>
+            Sin sanciones
+          <% end %>
+        </td>
         <td><%= user_event.points - user_event.sanctions_points %></td>
       </tr>
     <% end %>

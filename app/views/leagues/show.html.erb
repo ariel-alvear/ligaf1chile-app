@@ -1,6 +1,7 @@
 <h2>Liga: <strong><%= @league.name %></strong></h2>
 <table class="table">
   <thead>
+
     <tr>
       <th scope="col">Posición</th>
       <th scope="col">Id de piloto</th>
@@ -9,7 +10,7 @@
       <th scope="col">Carreras</th>
       <th scope="col">Puntaje preliminar</th>
       <th scope="col">Sanciones</th>
-      <th scope="col">Puntaje final</th>
+      <th scope="col">Puntaje Final</th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +30,7 @@
             Sin sanciones
           <% end %>
         </td>
-        <td><%= user_league.points - user_league.user_sanctions_points(@league.id) %></td>
+        <td><%= user_league.final_score(@league.id) %></td>
       </tr>
     <% end %>
   </tbody>

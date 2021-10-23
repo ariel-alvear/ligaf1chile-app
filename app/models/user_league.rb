@@ -47,4 +47,8 @@ class UserLeague < ApplicationRecord
       true
     end
   end
+
+  def final_score(league_id)
+    self.user_points(league_id) - self.user_sanctions_points(league_id)
+  end
 end
