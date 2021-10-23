@@ -28,4 +28,8 @@ class UserEvent < ApplicationRecord
       true
     end
   end
+
+  def final_score
+    self.points - self.sanctions_points
+  end
 end
