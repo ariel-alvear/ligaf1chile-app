@@ -1,5 +1,10 @@
 <h2>Sanciones de <strong><%= @event.track.name %></strong></h2>
 
+<% if can? :manage, League %>
+  <a href="<%= new_sanction_path(event: params[:event_id], league: @league.id) %>" class="btn btn-info">Crear nueva sanción</a>
+<% end %>
+<a href="<%= events_path(event_id: params[:event_id], league: @league.id) %>" class="btn btn-info">Volver a eventos</a>
+
 <% @sanctions.each do |sanction| %>
   <div class="card mt-2">
     <div class="card-body">
@@ -7,11 +12,9 @@
       <p class="card-text">Descripción: <%= sanction.description %></p>
       <p class="card-text">Video: <%= sanction.videolink %></p>
       <p class="card-text">Puntos: <%= sanction.points_taken %></p>
+      <% if can? :manage, League %>
+        <%= link_to 'Borrar funa', sanction_path(sanction, event_id: params[:event_id], league: @league.id), method: :delete, data: { confirm: "¿Estás seguro de borrar la funa?"}  %>
+      <% end %>
     </div>
   </div>
 <% end %>
-
-<% if can? :manage, League %>
-  <a href="<%= new_sanction_path(event: params[:event_id], league: @league.id) %>" class="btn btn-info">Crear nueva sanción</a>
-<% end %>
-<a href="<%= events_path(event_id: params[:event_id], league: @league.id) %>" class="btn btn-info">Volver a eventos</a>

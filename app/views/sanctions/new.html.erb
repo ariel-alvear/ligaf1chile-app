@@ -1,3 +1,5 @@
 <h2>Crear nueva sanción de <strong><%= @event.track.name %></strong></h2>
 
 <%= render 'form' %>
+
+<a href="<%= sanctions_path(event_id: params[:event], league: params[:league]) %>" class="btn btn-info">Volver a sanciones</a>

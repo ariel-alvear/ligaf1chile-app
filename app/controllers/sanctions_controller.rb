@@ -23,6 +23,12 @@ class SanctionsController < ApplicationController
     end
   end
 
+  def destroy
+    @sanction = Sanction.find(params[:id])
+    @sanction.destroy
+    redirect_to sanctions_path(event_id: params[:event_id], league: params[:league])
+  end
+
   private
 
   def sanction_params

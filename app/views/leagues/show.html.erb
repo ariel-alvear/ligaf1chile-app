@@ -1,4 +1,8 @@
 <h2>Liga: <strong><%= @league.name %></strong></h2>
+
+<a href="<%= events_path(league: @league.id) %>" class="btn btn-info">Eventos</a>
+<%= link_to 'Volver a ligas', leagues_path %>
+
 <table class="table">
   <thead>
 
@@ -35,6 +39,3 @@
     <% end %>
   </tbody>
 </table>
-
-<a href="<%= events_path(league: @league.id) %>" class="btn btn-info">Eventos</a>
-<%= link_to 'Volver a ligas', leagues_path %>

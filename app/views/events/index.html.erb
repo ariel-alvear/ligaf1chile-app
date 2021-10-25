@@ -1,5 +1,10 @@
 <h2>Eventos de <strong><%= @league.name %></strong></h2>
 
+<% if can? :manage, League %>
+  <a href="<%= new_event_path(league: @league.id) %>" class="btn btn-info">Crear nuevo evento</a>
+<% end %>
+<a href="<%= league_path(@league.id) %>" class="btn btn-info">Volver a liga</a>
+
 <% @events.each do |event| %>
   <div class="card">
     <div class="card-body">
@@ -13,8 +18,3 @@
     </div>
   </div>
 <% end %>
-
-<% if can? :manage, League %>
-  <a href="<%= new_event_path(league: @league.id) %>" class="btn btn-info">Crear nuevo evento</a>
-<% end %>
-  <a href="<%= league_path(@league.id) %>" class="btn btn-info">Volver a liga</a>
