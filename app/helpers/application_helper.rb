@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def user_events_for_select(event)
-    UserEvent.where(event_id: event).collect { |user_event| [user_event.user.name, user_event.id] }
+    UserEvent.where(event_id: event).collect { |user_event| [user_event.user.drivers_name, user_event.id] }
   end
 end

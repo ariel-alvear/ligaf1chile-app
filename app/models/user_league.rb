@@ -29,7 +29,7 @@ class UserLeague < ApplicationRecord
     self.user.user_events.each do |user_event|
       user_league_points << user_event.points if user_event.event.league_id == league_id.to_i
     end
-    user_league_points.sum
+    user_league_points.sum { |e| e.to_i }
   end
 
   def user_sanctions_points(league_id)
@@ -49,6 +49,6 @@ class UserLeague < ApplicationRecord
   end
 
   def final_score(league_id)
-    self.user_points(league_id) - self.user_sanctions_points(league_id)
+    self.user_points(league_id) - self.user_sanctions_points(league_id) if self.user_points(league_id)
   end
 end

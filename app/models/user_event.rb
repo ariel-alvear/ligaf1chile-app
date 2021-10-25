@@ -18,7 +18,7 @@ class UserEvent < ApplicationRecord
   end
 
   def sanctions_points
-    self.sanctions.pluck(:points_taken).sum
+    self.sanctions.pluck(:points_taken).sum { |e| e.to_i }
   end
 
   def check_for_identical_record
@@ -30,6 +30,6 @@ class UserEvent < ApplicationRecord
   end
 
   def final_score
-    self.points - self.sanctions_points
+    self.points - self.sanctions_points if self.points
   end
 end
