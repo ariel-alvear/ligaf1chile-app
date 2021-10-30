@@ -2,10 +2,6 @@ class UserLeague < ApplicationRecord
   belongs_to :user
   belongs_to :league
 
-  validates :user_id, uniqueness: {
-    scope: [ :league_id, :user_id ]
-  }
-
   def user_name
     self.user.name
   end
