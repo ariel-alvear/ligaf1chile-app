@@ -2,7 +2,9 @@ class UserLeague < ApplicationRecord
   belongs_to :user
   belongs_to :league
 
-  before_create :check_for_identical_record
+  validates :user_id, uniqueness: {
+    scope: [ :league_id, :user_id ]
+  }
 
   def user_name
     self.user.name
@@ -38,14 +40,6 @@ class UserLeague < ApplicationRecord
       sanctions_points << user_event.sanctions.pluck(:points_taken).sum if user_event.event.league_id == league_id.to_i
     end
     sanctions_points.sum
-  end
-
-  def check_for_identical_record
-    if UserLeague.exists?(user_id: self.user_id, league_id: self.league_id)
-      raise Exception.new('Participantes duplicados!')
-    else
-      true
-    end
   end
 
   def final_score(league_id)

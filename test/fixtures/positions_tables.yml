@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position: MyString
+  points: 1
+  references: 
+
+two:
+  position: MyString
+  points: 1
+  references: 

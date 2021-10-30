@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_211042) do
+ActiveRecord::Schema.define(version: 2021_10_30_202023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,36 @@ ActiveRecord::Schema.define(version: 2021_10_16_211042) do
     t.index ["track_id"], name: "index_events_on_track_id"
   end
 
+  create_table "league_points_systems", force: :cascade do |t|
+    t.bigint "league_id", null: false
+    t.bigint "points_system_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["league_id"], name: "index_league_points_systems_on_league_id"
+    t.index ["points_system_id"], name: "index_league_points_systems_on_points_system_id"
+  end
+
   create_table "leagues", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "created_by"
+  end
+
+  create_table "points_systems", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "positions_tables", force: :cascade do |t|
+    t.string "position"
+    t.integer "points"
+    t.bigint "points_system_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["points_system_id"], name: "index_positions_tables_on_points_system_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -66,6 +90,7 @@ ActiveRecord::Schema.define(version: 2021_10_16_211042) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "role"
     t.index ["event_id"], name: "index_user_events_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_user_events_on_user_id_and_event_id", unique: true
     t.index ["user_id"], name: "index_user_events_on_user_id"
   end
 
@@ -76,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_10_16_211042) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "points"
     t.index ["league_id"], name: "index_user_leagues_on_league_id"
+    t.index ["user_id", "league_id"], name: "index_user_leagues_on_user_id_and_league_id", unique: true
     t.index ["user_id"], name: "index_user_leagues_on_user_id"
   end
 
@@ -105,6 +131,9 @@ ActiveRecord::Schema.define(version: 2021_10_16_211042) do
 
   add_foreign_key "events", "leagues"
   add_foreign_key "events", "tracks"
+  add_foreign_key "league_points_systems", "leagues"
+  add_foreign_key "league_points_systems", "points_systems"
+  add_foreign_key "positions_tables", "points_systems"
   add_foreign_key "sanctions", "user_events"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"

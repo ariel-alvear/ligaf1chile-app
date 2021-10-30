@@ -1,0 +1,2 @@
+class PositionsTable < ApplicationRecord
+end
