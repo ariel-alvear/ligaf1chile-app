@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     end
     rescue ActiveRecord::RecordNotUnique
       flash[:alert] = 'Participantes duplicados'
-      redirect_to new_league_path
+      redirect_to new_event_path(league: params[:event][:league_id])
   end
 
   private
@@ -37,6 +37,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date, :track_id, :league_id, user_events_attributes: [:user_id, :points, :position])
+    params.require(:event).permit(:name, :date, :track_id, :league_id, user_events_attributes: [:user_id])
   end
 end

@@ -3,8 +3,6 @@ class UserEvent < ApplicationRecord
   belongs_to :event
   has_many :sanctions
 
-  before_save :check_for_identical_record
-
   def user_name
     self.user.name
   end
@@ -19,14 +17,6 @@ class UserEvent < ApplicationRecord
 
   def sanctions_points
     self.sanctions.pluck(:points_taken).sum { |e| e.to_i }
-  end
-
-  def check_for_identical_record
-    if UserEvent.exists?(user_id: self.user_id, event_id: self.event_id)
-      raise Exception.new('Participantes duplicados!')
-    else
-      true
-    end
   end
 
   def final_score
