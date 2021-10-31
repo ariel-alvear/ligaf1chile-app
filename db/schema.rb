@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_202023) do
+ActiveRecord::Schema.define(version: 2021_10_31_195125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2021_10_30_202023) do
     t.string "name"
     t.index ["league_id"], name: "index_events_on_league_id"
     t.index ["track_id"], name: "index_events_on_track_id"
+  end
+
+  create_table "extra_points", force: :cascade do |t|
+    t.text "description"
+    t.integer "points_given"
+    t.bigint "user_event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_event_id"], name: "index_extra_points_on_user_event_id"
   end
 
   create_table "league_points_systems", force: :cascade do |t|
@@ -131,6 +140,7 @@ ActiveRecord::Schema.define(version: 2021_10_30_202023) do
 
   add_foreign_key "events", "leagues"
   add_foreign_key "events", "tracks"
+  add_foreign_key "extra_points", "user_events"
   add_foreign_key "league_points_systems", "leagues"
   add_foreign_key "league_points_systems", "points_systems"
   add_foreign_key "positions_tables", "points_systems"
