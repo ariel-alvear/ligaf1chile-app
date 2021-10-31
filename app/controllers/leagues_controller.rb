@@ -15,13 +15,15 @@ class LeaguesController < ApplicationController
   def create
     @user = current_user
     @league = League.create(league_params)
-    @league.update(created_by: @user.drivers_name)
     if @league.valid?
       redirect_to @league
     else
       flash[:alert] = @league.errors.full_messages
       redirect_to new_league_path
     end
+    rescue ActiveRecord::RecordNotUnique
+      flash[:alert] = 'Participantes duplicados'
+      redirect_to new_league_path
   end
 
   def edit

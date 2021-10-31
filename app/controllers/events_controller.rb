@@ -21,6 +21,9 @@ class EventsController < ApplicationController
       flash[:alert] = @event.errors.full_messages
       redirect_to new_event_path(league: params[:event][:league_id])
     end
+    rescue ActiveRecord::RecordNotUnique
+      flash[:alert] = 'Participantes duplicados'
+      redirect_to new_league_path
   end
 
   private
