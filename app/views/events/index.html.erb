@@ -14,6 +14,7 @@
       <p class="card-text"><%= event.track_country %></p>
       <p class="card-text">Pilotos: <%= event.participant_number %></p>
       <a href="<%= user_events_path(event_id: event.id, league: params[:league]) %>" class="btn btn-info">Tabla de Participantes</a>
+      <a href="<%= extra_points_path(event_id: event.id, league: params[:league]) %>" class="btn btn-info">Puntos extra</a>
       <a href="<%= sanctions_path(event_id: event.id, league: params[:league]) %>" class="btn btn-info">Sanciones del evento</a>
     </div>
   </div>
