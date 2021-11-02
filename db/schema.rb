@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_195125) do
+ActiveRecord::Schema.define(version: 2021_11_02_223447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,21 +35,14 @@ ActiveRecord::Schema.define(version: 2021_10_31_195125) do
     t.index ["user_event_id"], name: "index_extra_points_on_user_event_id"
   end
 
-  create_table "league_points_systems", force: :cascade do |t|
-    t.bigint "league_id", null: false
-    t.bigint "points_system_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["league_id"], name: "index_league_points_systems_on_league_id"
-    t.index ["points_system_id"], name: "index_league_points_systems_on_points_system_id"
-  end
-
   create_table "leagues", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "created_by"
+    t.bigint "points_system_id", default: 1, null: false
+    t.index ["points_system_id"], name: "index_leagues_on_points_system_id"
   end
 
   create_table "points_systems", force: :cascade do |t|
@@ -141,8 +134,6 @@ ActiveRecord::Schema.define(version: 2021_10_31_195125) do
   add_foreign_key "events", "leagues"
   add_foreign_key "events", "tracks"
   add_foreign_key "extra_points", "user_events"
-  add_foreign_key "league_points_systems", "leagues"
-  add_foreign_key "league_points_systems", "points_systems"
   add_foreign_key "positions_tables", "points_systems"
   add_foreign_key "sanctions", "user_events"
   add_foreign_key "user_events", "events"

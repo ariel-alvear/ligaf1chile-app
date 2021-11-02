@@ -2,6 +2,7 @@ class League < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :user_leagues, dependent: :destroy
   has_many :users, through: :user_leagues
+  belongs_to :points_system
 
   validates :description, presence: true
   validates :name, presence: true

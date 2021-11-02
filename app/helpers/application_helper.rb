@@ -10,4 +10,8 @@ module ApplicationHelper
   def user_events_for_select(event)
     UserEvent.where(event_id: event).collect { |user_event| [user_event.user.drivers_name, user_event.id] }
   end
+
+  def points_system_for_select
+    PointsSystem.all.collect { |system| [system.name, system.id] }
+  end
 end

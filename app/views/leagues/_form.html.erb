@@ -8,6 +8,8 @@
   <% end %>
   <%= form.input :name, label: 'Nombre de la liga' %>
   <%= form.input :description, label: 'Descripción de la liga' %>
+  <p>Sistema de puntos</p>
+  <%= form.select(:points_system_id, points_system_for_select, prompt: 'Seleccionar sistema de puntos', label: 'Sistema de puntos') %>
 
   <h3>Agregar participante</h3>
   <%= form.fields_for :user_leagues do |user_league| %>
