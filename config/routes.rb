@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resources :user_events
   resources :sanctions
   resources :extra_points
+  resources :points_systems
+  resources :positions_tables
 
-  get 'user_events/assign_scores', to: 'user_events#assign_scores'
+  get 'configurations/index'
 
   root 'leagues#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
