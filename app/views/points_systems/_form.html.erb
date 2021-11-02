@@ -1,0 +1,20 @@
+<%= simple_form_for @points_system do |form| %>
+  <% if @points_system.errors.any? %>
+    <ul>
+    <% @points_system.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <%= form.input :name, label: 'Nombre del sistema de puntos' %>
+
+  <h3>Agregar posición y puntos</h3>
+  <%= form.fields_for :positions_tables do |positions| %>
+    <%= render 'positions_table_fields', f: positions %>
+  <% end %>
+
+  <div class="link">
+    <%= link_to_add_association "Agregar otra posición", form, :positions_tables %>
+  </div>
+  <%= form.submit 'Crear nuevo sistema de puntos', class: 'btn btn-success' %>
+<% end %>

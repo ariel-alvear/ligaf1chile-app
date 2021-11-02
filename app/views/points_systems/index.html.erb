@@ -1,0 +1,14 @@
+<h2>Sistemas de puntos</h2>
+
+<% @points_systems.each do |system| %>
+  <h4><%= system.name %></h4>
+  <% system.positions_tables.each do |table| %>
+    <p>Posición: <strong><%= table.position %></strong> / Puntaje: <strong><%= table.points %></strong>
+  <% end %>
+<% end %>
+
+<% if can? :manage, League %>
+  <%= button_to 'Crear nuevo sistema de puntos', new_points_system_path, class: 'btn btn-info', method: :get %>
+  <hr>
+  <%= button_to 'Volver a configuraciones', configurations_index_path, class: 'btn btn-info', method: :get %>
+<% end %>
