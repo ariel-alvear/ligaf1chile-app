@@ -13,6 +13,9 @@
       <h5 class="card-title d-inline-block"><%= league.name %></h5>
       <a href="<%= events_path(league: league.id) %>" class="d-inline-block"><i class="fas fa-list-ol"></i></a>
       <a href="<%= league_path(league.id) %>" class="d-inline-block">Tabla</a>
+      <% if can? :manage, League %>
+        <a href="<%= edit_league_path(league.id) %>" class="d-inline-block">Editar</a>
+      <% end %>
       <p class="card-text"><%= league.description %></p>
       <p class="card-text"><strong>Participantes: <%= league.league_participants %></strong></p>
       <p class="card-text"><strong>Carreras: <%= league.league_events %></strong></p>

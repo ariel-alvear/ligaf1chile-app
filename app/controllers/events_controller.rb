@@ -16,6 +16,9 @@ class EventsController < ApplicationController
     @league = League.find(params[:event][:league_id])
     @event = Event.create(event_params)
     if @event.valid?
+      @event.user_events.each do |user_event|
+        user_event.update(points: scores_for_users_events(@league.id)[user_event.position.to_s])
+      end
       redirect_to events_path(league: params[:event][:league_id])
     else
       flash[:alert] = @event.errors.full_messages
@@ -37,6 +40,11 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date, :track_id, :league_id, user_events_attributes: [:user_id])
+    params.require(:event).permit(:name, :date, :track_id, :league_id, user_events_attributes: [:user_id, :position, :points])
+  end
+
+
+  def scores_for_users_events(league_id)
+    PositionsTable.where(points_system_id: League.find(league_id).points_system_id).collect { |pt| [pt.position, pt.points] }.to_h
   end
 end
