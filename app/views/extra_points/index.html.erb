@@ -1,1 +1,19 @@
 <h2>Puntos extra de <strong><%= @event.name %> / <%= @event.track.name %></strong></h2>
+
+<% if can? :manage, League %>
+  <a href="<%= new_extra_point_path(event: params[:event_id], league: @league.id) %>" class="btn btn-info">Crear nuevo punto extra</a>
+<% end %>
+<a href="<%= events_path(event_id: params[:event_id], league: @league.id) %>" class="btn btn-info">Volver a eventos</a>
+
+<% @extra_points.each do |extra_point| %>
+  <div class="card mt-2">
+    <div class="card-body">
+      <h5 class="card-title d-inline-block">Piloto bonificado: <strong><%= extra_point.extrapointed_driver %></strong></h5>
+      <p class="card-text">Descripción: <%= extra_point.description %></p>
+      <p class="card-text">Puntos agregados: <strong><%= extra_point.points_given %></strong></p>
+      <% if can? :manage, League %>
+        <%= link_to 'Borrar punto extra', extra_point_path(extra_point, event_id: params[:event_id], league: @league.id), method: :delete, data: { confirm: "¿Estás seguro de borrar este punto extra?"}  %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

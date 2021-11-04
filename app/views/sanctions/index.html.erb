@@ -13,7 +13,7 @@
       <p class="card-text">Video: <%= sanction.videolink %></p>
       <p class="card-text">Puntos: <%= sanction.points_taken %></p>
       <% if can? :manage, League %>
-        <%= link_to 'Borrar funa', sanction_path(sanction, event_id: params[:event_id], league: @league.id), method: :delete, data: { confirm: "¿Estás seguro de borrar la funa?"}  %>
+        <%= link_to 'Borrar sanción', sanction_path(sanction, event_id: params[:event_id], league: @league.id), method: :delete, data: { confirm: "¿Estás seguro de borrar la funa?"}  %>
       <% end %>
     </div>
   </div>

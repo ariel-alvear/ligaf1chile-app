@@ -1,0 +1,13 @@
+<%= simple_form_for @extra_point do |form| %>
+  <% if @extra_point.errors.any? %>
+    <ul>
+    <% @extra_point.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <%= form.input :description, label: 'Descripción y razón del punto extra' %>
+  <%= form.input :points_given, label: 'Puntos que se deben sumar' %>
+  <%= form.select(:user_event_id, user_events_for_select(@event.id), prompt: 'Seleccionar participante a bonificar') %>
+  <%= form.submit 'Crear punto extra', class: 'btn btn-success', locals: { event: @event, league: @league } %>
+<% end %>

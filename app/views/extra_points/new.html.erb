@@ -1,0 +1,5 @@
+<h2>Crear otorgar punto extra en <strong><%= @event.name %> / <%= @event.track.name %></strong></h2>
+
+<%= render 'form' %>
+
+<a href="<%= extra_points_path(event_id: params[:event], league: params[:league]) %>" class="btn btn-info">Volver a puntos extra</a>

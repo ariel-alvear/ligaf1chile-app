@@ -2,6 +2,7 @@ class UserEvent < ApplicationRecord
   belongs_to :user
   belongs_to :event
   has_many :sanctions
+  has_many :extra_points
 
   def user_name
     self.user.name
