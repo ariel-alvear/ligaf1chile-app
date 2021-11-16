@@ -1,8 +1,8 @@
 class UserEvent < ApplicationRecord
   belongs_to :user
   belongs_to :event
-  has_many :sanctions
-  has_many :extra_points
+  has_many :sanctions, dependent: :destroy
+  has_many :extra_points, dependent: :destroy
 
   def user_name
     self.user.name
