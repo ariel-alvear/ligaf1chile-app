@@ -16,6 +16,9 @@
       <a href="<%= user_events_path(event_id: event.id, league: params[:league]) %>" class="btn btn-info">Tabla de Participantes</a>
       <a href="<%= extra_points_path(event_id: event.id, league: params[:league]) %>" class="btn btn-info">Puntos extra</a>
       <a href="<%= sanctions_path(event_id: event.id, league: params[:league]) %>" class="btn btn-info">Sanciones del evento</a>
+      <% if can? :manage, League %>
+        <%= link_to 'Borrar evento', event_path(event, league: params[:league]), method: :delete, data: { confirm: "¿Estás seguro de borrar este evento? Vas a borrar todos los participantes asociados con sus sanciones y puntos extra asociados, esta acción no se puede deshacer"}  %>
+      <% end %>
     </div>
   </div>
 <% end %>

@@ -29,6 +29,12 @@ class EventsController < ApplicationController
       redirect_to new_event_path(league: params[:event][:league_id])
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_path(league: params[:league])
+  end
+
   private
 
   def set_league
