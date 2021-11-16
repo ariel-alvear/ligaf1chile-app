@@ -17,7 +17,7 @@
       <p class="card-text"><strong>Participantes: <%= league.league_participants %></strong></p>
       <p class="card-text"><strong>Carreras: <%= league.league_events %></strong></p>
       <% if can? :manage, League %>
-        <%= link_to 'Borrar liga', league_path(league), method: :delete, data: { confirm: "¿Estás seguro de borrar esta liga? Vas a borrar todos los eventos y participantes asociados, y esta acción no se puede deshacer"}  %>
+        <% 'link_to "Borrar liga", league_path(league), method: :delete, data: { confirm: "¿Estás seguro de borrar esta liga? Vas a borrar todos los eventos y participantes asociados, y esta acción no se puede deshacer"}'  %>
       <% end %>
     </div>
   </div>
