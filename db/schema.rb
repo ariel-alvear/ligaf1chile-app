@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_11_02_223447) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "created_by"
-    t.bigint "points_system_id", default: 1, null: false
+    t.bigint "points_system_id", null: false
     t.index ["points_system_id"], name: "index_leagues_on_points_system_id"
   end
 
