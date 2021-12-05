@@ -1,9 +1,10 @@
 # En estos controladores se manejan los participantes de eventos
 class UserEventsController < ApplicationController
   def index
-    @user_events = UserEvent.where(event_id: params[:event_id])
+    @user_events = UserEvent.where(event_id: params[:event_id]).where(status: "starter")
     @event = Event.find(params[:event_id])
     @league = League.find(params[:league])
+    @user_events_backups = UserEvent.where(event_id: params[:event_id]).where(status: "backup")
   end
 
   def new
