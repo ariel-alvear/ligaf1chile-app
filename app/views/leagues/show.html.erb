@@ -47,3 +47,49 @@
     <% end %>
   </tbody>
 </table>
+
+<% if @user_leagues_backups %>
+  <h2>Reservas</h2>
+  <table class="table">
+    <thead>
+
+      <tr>
+        <th scope="col">Id de piloto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Carreras</th>
+        <th scope="col">Puntaje preliminar</th>
+        <th scope="col">Sanciones</th>
+        <th scope="col">Puntos Extra</th>
+        <th scope="col">Puntaje Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% i = 0 %>
+      <% @user_leagues_backups.each do |user_league| %>
+        <tr>
+          <td><%= user_league.user_driver_name %></td>
+          <td><%= user_league.user_name %></td>
+          <td><%= user_league.user_last_name %></td>
+          <td><%= user_league.user_events(@league.id) %></td>
+          <td><%= user_league.user_preliminary_points(@league.id) %></td>
+          <td>
+            <% if user_league.user_sanctions_points(@league.id) > 0 %>
+              -<%= user_league.user_sanctions_points(@league.id) %>
+            <% else %>
+              Sin sanciones
+            <% end %>
+          </td>
+          <td>
+            <% if user_league.user_extra_points(@league.id) > 0 %>
+              <%= user_league.user_extra_points(@league.id) %>
+            <% else %>
+              Sin puntos Extra
+            <% end %>
+          </td>
+          <td><%= user_league.user_total_points(@league.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -40,11 +40,13 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @user_leagues = UserLeague.where(league_id: params[:id])
+    @user_leagues = UserLeague.where(league_id: params[:id]).where(status: "starter")
     @user_leagues.each do |user_league|
       user_league.update(points: user_league.user_total_points(params[:id]))
     end
     @user_leagues = @user_leagues.order("points DESC")
+
+    @user_leagues_backups = UserLeague.where(league_id: params[:id]).where(status: "backup") if UserLeague.where(league_id: params[:id]).where(status: "backup").any?
   end
 
   def destroy
