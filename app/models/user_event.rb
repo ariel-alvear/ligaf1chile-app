@@ -4,6 +4,8 @@ class UserEvent < ApplicationRecord
   has_many :sanctions, dependent: :destroy
   has_many :extra_points, dependent: :destroy
 
+  enum status: { starter: 0, backup: 1 }
+
   def user_name
     self.user.name
   end
