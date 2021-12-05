@@ -2,6 +2,8 @@ class UserLeague < ApplicationRecord
   belongs_to :user
   belongs_to :league
 
+  enum status: { starter: 0, backup: 1 }
+
   def user_name
     self.user.name
   end
