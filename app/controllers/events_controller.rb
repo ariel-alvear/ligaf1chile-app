@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date, :track_id, :league_id, user_events_attributes: [:user_id, :position, :points])
+    params.require(:event).permit(:name, :date, :track_id, :league_id, user_events_attributes: [:user_id, :position, :points, :status])
   end
 
 

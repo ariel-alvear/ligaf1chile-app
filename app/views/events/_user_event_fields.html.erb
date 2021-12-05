@@ -2,6 +2,7 @@
   <div class="field">
     <%= f.select(:user_id, users_for_select_event(@league.id), prompt: 'Seleccionar participante') %>
     <%= f.select(:position, positions_for_select(@league.id), prompt: 'Seleccionar posicion') %>
+    <%= f.select(:status, { titular: "starter", reserva: "backup" }, prompt: 'Seleccionar si es tituar o reserva') %>
 
     <%= link_to_remove_association "Remove participant", f %>
   </div>
