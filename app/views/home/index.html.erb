@@ -1,1 +1,11 @@
-<h1>En construcción</h1>
+<h1>Bienvenido a la comunidad de F1 Chile</h1>
+
+<p>Una comunidad donde creamos ligas y competimos con honor y pasión</p>
+
+<% if current_user %>
+  <h2>Bienvenido de nuevo <%= current_user.name %>!</h2>
+  <%= button_to 'Ir a ligas', leagues_path, method: :get, :class => 'btn btn-primary mx-4' %>
+<% else %>
+  <h2>¿No eres un piloto? Dale click a Crear usuario y únete a la comunidad!</h2>
+  <%= button_to 'Crear usuario', new_user_registration_path, method: :get, :class => 'btn btn-primary mx-4' %>
+<% end %>
