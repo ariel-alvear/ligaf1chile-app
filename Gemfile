@@ -84,3 +84,6 @@ gem "cocoon"
 # Avisos de errores en producción
 gem "sentry-ruby"
 gem "sentry-rails"
+
+# Agregamos active_admin para gestión de recursos
+gem 'activeadmin'
