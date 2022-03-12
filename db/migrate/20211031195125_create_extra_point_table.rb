@@ -1,4 +1,4 @@
-class ExtraPoint < ActiveRecord::Migration[6.1]
+class CreateExtraPointTable < ActiveRecord::Migration[6.1]
   def change
     create_table :extra_points do |t|
       t.text :description

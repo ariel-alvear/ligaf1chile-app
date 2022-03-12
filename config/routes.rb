@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :extra_points
   resources :points_systems
   resources :positions_tables
+  resources :league_likes
 
   get 'configurations/index'
 

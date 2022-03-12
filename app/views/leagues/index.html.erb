@@ -20,5 +20,15 @@
         <%= link_to "Borrar liga", league_path(league), method: :delete, data: { confirm: "¿Estás seguro de borrar esta liga? Vas a borrar todos los eventos y participantes asociados, y esta acción no se puede deshacer"}  %>
       <% end %>
     </div>
+    <!-- verificamos que el usuario haya hecho like -->
+    <% if user_signed_in? %>
+      <% pre_like = league&.league_likes.find { |like| like.user_id == current_user.id} %>
+        <!-- si ya hizo like, mostramos boton unlike, sino, boton like -->
+        <% if pre_like %>
+            <%= link_to(league_like_path(pre_like, league_id: league.id), method: :delete) do %><i class="fas fa-thumbs-up fa-2x d-inline-block"></i><% end %>
+        <% else %>
+            <%= link_to(league_likes_path(league_id: league.id), method: :post)do%><i class="far fa-thumbs-up fa-2x d-inline-block"></i><% end %>
+        <% end %>
+    <% end %>
   </div>
 <% end %>

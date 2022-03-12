@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :user_leagues, dependent: :destroy
   has_many :leagues, through: :user_leagues
 
+  has_many :league_likes, dependent: :destroy
+
   validates :name, presence: true
   validates :last_name, presence: true
   validates :drivers_name, presence: true
