@@ -87,3 +87,6 @@ gem "sentry-rails"
 
 # Agregamos active_admin para gestión de recursos
 gem 'activeadmin'
+
+# Gráficos
+gem 'chartkick'

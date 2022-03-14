@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :points_systems
   resources :positions_tables
   resources :league_likes
+  get 'profile', to: 'profiles#show'
 
   get 'configurations/index'
 

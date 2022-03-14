@@ -1,0 +1,11 @@
+<h1>Mi perfil</h1>
+
+<div>
+  <h3>Mis posiciones obtenidas en carreras</h3>
+  <%= pie_chart @user_events.group(:position).count %>
+</div>
+
+<div>
+  <h3>Mis puntos conseguidos en carreras</h3>
+  <%= pie_chart @user_events.group(:points).count %>
+</div>

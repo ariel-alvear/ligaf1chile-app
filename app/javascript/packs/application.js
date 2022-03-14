@@ -14,3 +14,5 @@ ActiveStorage.start()
 
 require("jquery")
 require("@nathanvda/cocoon")
+
+import "chartkick/chart.js"

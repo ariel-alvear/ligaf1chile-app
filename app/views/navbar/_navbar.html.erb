@@ -7,6 +7,9 @@
     <ul class="navbar-nav ml-auto">
     <% if current_user %>
       <li>
+        <%= button_to "Mi perfil", profile_path, method: :get, :class => 'btn btn-primary mx-4'  %>
+      </li>
+      <li>
         <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-primary mx-4'  %>
       </li>
       <% if can? :manage, League %>
