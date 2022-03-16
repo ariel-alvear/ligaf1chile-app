@@ -90,3 +90,7 @@ gem 'activeadmin'
 
 # Gráficos
 gem 'chartkick'
+
+# Futenticación con google y fb
+gem 'omniauth'
+gem 'omniauth-facebook'

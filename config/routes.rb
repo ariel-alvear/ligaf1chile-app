@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   get 'configurations/index'
 
   root 'home#index'
+
+  get '/auth/facebook/callback' => 'sessions#create'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
