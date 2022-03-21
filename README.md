@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Proyecto final de academia desafío latam.
 
-Things you may want to cover:
+Para instalar en local:
+1) Clonar repositorio
+2) Crear base de datos
+3) Correr migraciones
+4) Correr seeds
 
-* Ruby version
+# En producción
+Para ingresar como usuario admin se deben utilizar las siguientes credenciales:
 
-* System dependencies
+usuario: seed1@gmail.com
+password: password
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+El login con fb aún no está operativo.
+El pago con paypal despliega un modal para tomar la información de la tarjeta de crédito pero no hay credenciales por ahora.
