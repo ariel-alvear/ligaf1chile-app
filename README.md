@@ -17,4 +17,4 @@ password: 12345678
 El login con fb aún no está operativo.
 El pago con paypal despliega un modal para tomar la información de la tarjeta de crédito pero no hay credenciales por ahora.
 
-- En la siguiente url se puede testear https://ligaf-1-chile-app-xuuz2.ondigitalocean.app/
+- En la siguiente url se puede testear https://ligaf1chiletest.xyz/
